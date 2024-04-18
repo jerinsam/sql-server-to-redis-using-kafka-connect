@@ -21,10 +21,13 @@
 	## add git origin ##
 	git remote add origin https://github.com/jerinsam/SQL_SERVER_TO_REDIS_KAFKA_CONNECT.git
 	
+	# Track changes of Remote Repor dev branch 
+	git push --set-upstream origin dev
+
 	git push -u origin main
 		token : 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
 	
-	#Create new branch 
+	########## Create new branch #########
 	## Identify new changes in the Origin i.e. remote (github) repo
 	git fetch origin
 	## Update local repo with any change in remote repo
