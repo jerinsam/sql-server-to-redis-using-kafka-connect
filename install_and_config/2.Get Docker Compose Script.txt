@@ -1,0 +1,19 @@
+###### Got to Confluent Github page and Download Docker Compose File #######
+url : https://github.com/confluentinc/cp-all-in-one/tree/7.5.0-post
+Folder : cp-all-in-one-community
+
+Download Docker Compose Yaml File
+
+
+To connect to services in Docker, refer to the following ports.
+This may change, check git Readme file for latest updates and also double check docker compose file: 
+ 
+
+ZooKeeper: 8087
+Kafka broker: 8084, 8085
+Kafka broker JMX: 8086
+Confluent Schema Registry: 8081
+Kafka Connect: 8083
+ksqlDB: 8088
+Confluent REST Proxy: 8082
+Redis : 8089 #Updated Docker Compose file to add Redis Service as well
