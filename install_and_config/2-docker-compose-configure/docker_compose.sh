@@ -32,3 +32,7 @@ docker-compose stop
 # https://zakir-hossain.medium.com/running-confluent-platform-locally-with-docker-compose-ba6d9ad113e7
 # https://docs.confluent.io/platform/7.4/connect/confluent-hub/client.html
 # https://docs.confluent.io/platform/6.2/quickstart/ce-docker-quickstart.html
+
+
+#### Issue faced : 
+# If Docker Desktop is installed on Windows and Ubuntu VM is being used for development then change network adaptor setting to Bridged Adaptor and access the localhost using Windows wifi/ lan IP address. e.g. instead of http://localhost:9091/ use http://10.10.15.229:9021/.
