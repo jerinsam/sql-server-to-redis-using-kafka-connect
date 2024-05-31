@@ -49,6 +49,6 @@ ls ./jcustenborder-kafka-connect-redis-0.0.7
 
 ############################################### AFTER INSTALLATION #######################################################
 
-# Restart Docker Kafka Connect Container and navigate to KAKFA Confluent UI
+# Restart Docker Kafka Connect Container and navigate to KAKFA Confluent UI (e.g. http://localhost:9021/clusters)
 # Click on Kafka Broker and then click on Kafka Connect Server and click Connect service
 # On the side bar, click on connect and then add connectors. If SQL Server and Redis Sink shows there then Installation is successful.

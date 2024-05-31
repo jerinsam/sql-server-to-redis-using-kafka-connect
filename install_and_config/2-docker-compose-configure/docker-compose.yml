@@ -182,3 +182,18 @@ services:
       - 6379:6379
     hostname: redis
     container_name: redis
+    
+    
+  # Following will be used as an alternative to confluent control center, which is a UI to manage kafka services 
+  #kafka_manager: 
+  #  image: hlebalbau/kafka-manager:stable
+  #  restart: always
+  #  ports:
+  #    - "9000:9000"
+  #  depends_on:
+  #    - zookeeper
+  #    - broker
+  #  environment:
+  #    ZK_HOSTS: "zookeeper:2181"
+  #    APPLICATION_SECRET: "random-secret"
+  #  command: -Dpidfile.path=/dev/null 

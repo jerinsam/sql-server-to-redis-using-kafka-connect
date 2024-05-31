@@ -22,10 +22,11 @@ docker-compose stop
 # Kafka broker JMX: 9101
 # Confluent Schema Registry: 8081
 # Kafka Connect: 8083
-# Confluent Control Center: 9021
+# Confluent Control Center: 9021 - Confluent Control Center is a UI to manage the kafka and its associated services. 
 # ksqlDB: 8088
 # Confluent REST Proxy: 8082
  
+
 ##### Important Links to Follow ######
 
 # https://zakir-hossain.medium.com/debezium-source-connector-on-confluent-platform-d00494c29d17
@@ -35,4 +36,4 @@ docker-compose stop
 
 
 #### Issue faced : 
-# If Docker Desktop is installed on Windows and Ubuntu VM is being used for development then change network adaptor setting to Bridged Adaptor and access the localhost using Windows wifi/ lan IP address. e.g. instead of http://localhost:9091/ use http://10.10.15.229:9021/.
+# If Docker Desktop is installed on Windows and Ubuntu VM is being used for development then change network adaptor setting to Bridged Adaptor and access the localhost using Windows wifi/LAN IP address. e.g. instead of http://localhost:9091/ use http://10.10.15.229:9021/.
