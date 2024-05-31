@@ -31,7 +31,7 @@ rm ./debezium-connector-sqlserver-2.6.2.Final-plugin.tar.gz
 # Go to folder /etc/kafka in docker image of kafka connect
 # Open file "connect-standalone.properties" and identify the plugin.path (e.g. /usr/share/confluent-hub-components)
 # unzip the zip file and copy unzipped folder from local to docker container plugin.path
-
+# Restart Docker
 
 # Docker copy script to copy from local to docker container plugin.path : execute in local system command prompt (*windows) and make sure docker container is up.
 # script format : docker cp c:\path\to\local\file container_name:/path/to/target/dir/
@@ -41,8 +41,14 @@ docker cp C:\Users\jerin\Desktop\Connectors\jcustenborder-kafka-connect-redis-0.
 docker ps --format "{{.Names}}"
 
 
-# Execute below script in Docker Container for kafka connect
-# check if folder from local is copied
+# Execute below script in Docker kafka connect Container to check if folder from local is copied
 
 cd /usr/share/confluent-hub-components
 ls ./jcustenborder-kafka-connect-redis-0.0.7
+
+
+############################################### AFTER INSTALLATION #######################################################
+
+# Restart Docker Kafka Connect Container and navigate to KAKFA Confluent UI
+# Click on Kafka Broker and then click on Kafka Connect Server and click Connect service
+# On the side bar, click on connect and then add connectors. If SQL Server and Redis Sink shows there then Installation is successful.
