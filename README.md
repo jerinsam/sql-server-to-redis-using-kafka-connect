@@ -3,12 +3,12 @@ DATA ENGINEERING SOLUTIONS - STREAM SQL SERVER DATA TO REDIS
 
 
 
-#### Reference Links
+### Reference Links
 
 ##### Docker for Kafka : Reference
-# https://zakir-hossain.medium.com/running-confluent-platform-locally-with-docker-compose-ba6d9ad113e7
-# https://docs.confluent.io/platform/7.4/connect/confluent-hub/client.html
-# https://docs.confluent.io/platform/6.2/quickstart/ce-docker-quickstart.html
+- https://zakir-hossain.medium.com/running-confluent-platform-locally-with-docker-compose-ba6d9ad113e7
+- https://docs.confluent.io/platform/7.4/connect/confluent-hub/client.html
+- https://docs.confluent.io/platform/6.2/quickstart/ce-docker-quickstart.html
 
 ##### Confluent Github page and Download Docker Compose File 
 - url : https://github.com/confluentinc/cp-all-in-one/tree/7.5.0-post/cp-all-in-one
