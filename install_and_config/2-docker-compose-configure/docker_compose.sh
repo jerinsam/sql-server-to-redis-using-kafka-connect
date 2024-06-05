@@ -1,4 +1,4 @@
-###### Got to Confluent Github page and Download Docker Compose File #######
+###### Go to Confluent Github page and Download Docker Compose File #######
 # url : https://github.com/confluentinc/cp-all-in-one/tree/7.5.0-post/cp-all-in-one
 # Folder : cp-all-in-one
 
