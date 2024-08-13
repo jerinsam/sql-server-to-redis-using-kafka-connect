@@ -1,15 +1,20 @@
 {
-    "name": "pre-processed-json",
+    "name": "mssql-source-config-json",
     "config": {
-        "connector.class" : "io.debezium.connector.sqlserver.SqlServerConnector",
-        "tasks.max" : "1",
-        "database.server.name" : "10.10.14.74",
-        "database.hostname" : "localhost",
-        "database.port" : "1433",
-        "database.user" : "js",
-        "database.password" : "js",
-        "database.dbname" : "TRYIT",
-        "database.history.kafka.bootstrap.servers" : "localhost:9092",
-        "database.history.kafka.topic": "pre-preprocessed-json-topic"
-        }
+        "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+        "name": "mssql-source-config-json",
+        "tasks.max": "1",
+        "topic.prefix": "mssql-source-topic",
+        "database.names": "TRYIT",
+        "database.hostname": "10.10.13.121",
+        "database.port": "1433",
+        "database.user": "js",
+        "database.password": "js",
+        "database.encrypt": "true",
+        "database.trustServerCertificate": "true",
+        "table.include.list": "dbo.TestCacheKafkaConnect",
+        "schema.history.internal.kafka.bootstrap.servers": "broker:29092",
+        "schema.history.internal.kafka.topic": "schema.changes.sqlserverSource",
+        "snapshot.mode": "schema_only"
     }
+}
