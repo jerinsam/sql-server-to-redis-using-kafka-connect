@@ -14,7 +14,7 @@
 # SQL Server Connector : https://www.confluent.io/hub/debezium/debezium-connector-sqlserver
 # Download the connector in local environment
 # Go to folder /etc/kafka in docker image of kafka connect
-# Open file "connect-standalone.properties" and identify the plugin.path (e.g. /usr/share/confluent-hub-components)
+# Open file "connect-standalone.properties" or "connect-distributed.properties" and identify the plugin.path (e.g. /usr/share/confluent-hub-components)
 # unzip the zip file and copy unzipped folder from local to docker container plugin.path
 # Restart Docker
 
@@ -30,7 +30,7 @@ docker ps --format "{{.Names}}"
 
 # Debezium SQL Server Connector: https://debezium.io/documentation/reference/stable/connectors/sqlserver.html#sqlserver-deploying-a-connector
 # Go to folder /etc/kafka in docker image of kafka connect
-# Open file "connect-standalone.properties" and identify the plugin.path (e.g. /usr/share/confluent-hub-components)
+# Open file "connect-standalone.properties" or "connect-distributed.properties" and identify the plugin.path (e.g. /usr/share/confluent-hub-components)
 # Downlaod the connector tar file and unzip it in the plugin.path
 # Restart Docker
 
@@ -47,7 +47,7 @@ rm ./debezium-connector-sqlserver-2.6.2.Final-plugin.tar.gz
 # Redis Connector : https://www.confluent.io/hub/jcustenborder/kafka-connect-redis
 # Download the connector in local environment
 # Go to folder /etc/kafka in docker image of kafka connect
-# Open file "connect-standalone.properties" and identify the plugin.path (e.g. /usr/share/confluent-hub-components)
+# Open file "connect-standalone.properties" or "connect-distributed.properties" and identify the plugin.path (e.g. /usr/share/confluent-hub-components)
 # unzip the zip file and copy unzipped folder from local to docker container plugin.path
 # Restart Docker
 
