@@ -1,12 +1,12 @@
 {
-    "name": "redis-sink",
+    "name": "kafka-connect-redis-sink",
     "config": {
-      "name": "redis-sink",
+      "name": "kafka-connect-redis-sink",
       "connector.class": "com.github.jcustenborder.kafka.connect.redis.RedisSinkConnector",
       "tasks.max": "1",
-      "key.converter": "org.apache.kafka.connect.storage.StringConverter",
-      "value.converter": "org.apache.kafka.connect.storage.StringConverter",
-      "topics": "mssql-source-topic.TRYIT.dbo.TestCacheKafkaConnect",
+      "key.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
+      "value.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
+      "topics": "ksqldb-tranform-kafka-connect-payload",
       "redis.hosts": "redis:6379"
     }
 }
