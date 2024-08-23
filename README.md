@@ -1,4 +1,4 @@
-# SQL_SERVER_TO_REDIS_KAFKA_CONNECT
+## SQL_SERVER_TO_REDIS_KAFKA_CONNECT
 **DATA ENGINEERING SOLUTIONS - STREAM SQL SERVER DATA TO REDIS USING KAFKA CONNECT**
 
 #### Problem Statement - 
@@ -33,6 +33,9 @@ The solution is created on following are the list of Services:
 5. KSQL Kafka Streams for Transformation
 6. Kafka Connect - Redis Sink Connector
 7. Redis
+
+### Solution high level architecture
+![alt text]([https://github.com/[username]/[reponame]/blob/[branch]/image.jpg](https://github.com/jerinsam/sql-server-to-redis-using-kafka-connect/blob/main/main/kafka-connect-architecture.png)?raw=true)
 
 #### Install and Config
 
