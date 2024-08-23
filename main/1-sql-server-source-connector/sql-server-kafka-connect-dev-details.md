@@ -1,18 +1,19 @@
 
-########################### For SQL Server Source Connector ##########################
+### For SQL Server Source Connector
 
 
--- Confluent Kakfa Connect tutorial 
+##### Confluent Kakfa Connect tutorial 
     https://docs.confluent.io/platform/current/platform-quickstart.html
 
 
--- SQL Server Kafka Connector Properties:
+##### SQL Server Kafka Connector Properties:
+    https://zakir-hossain.medium.com/debezium-source-connector-on-confluent-platform-d00494c29d17 
     https://debezium.io/documentation/reference/stable/connectors/sqlserver.html
     https://docs.confluent.io/kafka-connectors/debezium-sqlserver-source/current/overview.html
     https://docs.confluent.io/kafka-connectors/debezium-sqlserver-source/current/sqlserver_source_connector_config.html#advanced-properties
 
 
---Important Properties 
+##### Important Properties of the connector
     "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
     "name": "mssql-source-config-json",
     "tasks.max": "1",
@@ -32,12 +33,12 @@
     "key.converter": "org.apache.kafka.connect.json.JsonConverter"
 
 
--- Value and Key converter (serializer) - different types : Used to convert (serialize) the message to a common format 
+##### Value and Key converter (serializer) - different types : Used to convert (serialize) the message to a common format 
     - Producer and Consumer should use same serializers to properly convert the messages.
     - https://www.confluent.io/blog/kafka-connect-deep-dive-converters-serialization-explained/
 
 
--- Errors faced during the development
+##### Errors faced during the development
     -- Kafka Connect unaable to connect to kafka broker with error "Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available."
         -- Resolution : In the connector configuration json add "schema.history.internal.kafka.bootstrap.servers" property with value "broker:29092" (** This is the bootstrap server value present in Connect container section of docker compose yaml)
         -- bootstrap server is generally used to communicate across different docker containers and localhost:port is used by the host system to communicate with docker container.
@@ -52,7 +53,7 @@
         -- Refer : https://basantakharel.com/setting-up-kafka-connect-with-debezium-connectors-importance-of-database-history-parameters
 
 
--- Test the stream (CDC SQL Server)
+##### Test the stream (CDC SQL Server)
     -- List all topics 
         -- Script : "kafka-topics --bootstrap-server broker:29092 --list"
         -- Execute above shell script in broker's shell. 
@@ -62,72 +63,11 @@
         -- Execute above shell script in broker's shell.          
     -- Add new records in the table mentioned in the connector configuration
         -- All the new records will start showing up in the console 
+        -- Use Insert into SQL Server Table scripts in the /Test folder
+ 
 
-
-
-
-########################### For Redis Sink Connector ##########################
-
-
-
--- Redis Kafka Connector Properties:
-    https://docs.confluent.io/kafka-connectors/redis/current/overview.html
-	
-
--- Important Properties 
-    "name": "redis-sink",
-    "connector.class": "com.github.jcustenborder.kafka.connect.redis.RedisSinkConnector",
-    "tasks.max": "1",
-    "key.converter": "org.apache.kafka.connect.storage.ByteArrayConverter",
-    "value.converter": "org.apache.kafka.connect.storage.ByteArrayConverter",
-    "topics": "ksqldb-tranform-kafka-connect-payload",
-    "redis.hosts": "redis:6379"
-
-
--- Topics used in Redis Sink
-	-- Topic used in the config is cerated using KSQL Streams (scripts can be found in ksql folder). 
-	-- KSQL is used to transform the records coming from the topic used by sql server connector to push the table rows.
-
-
--- Errors faced during the development
-    -- Error : Kafka Connect unaable to connect to redis with error "Unable to connect to localhost:6379"
-        -- Resolution : In the connector configuration json add "redis.hosts" property with value "redis:6379" (** This is the host name value passed in redis container section of docker compose yaml)
-        -- Host names is generally used to communicate across different docker containers and localhost:port is used by the host system to communicate with docker container.
-        -- In config json, always mention bootstrap server or host name mentioned in docker compose yaml, instead of localhost. If localhost is passed then there will be error.
-	
-	-- Error : Task threw an uncaught and unrecoverable exception. 
-		-- Resolution : 
-        -- This is caused due to Key and Value Converter (Serializer)
-        -- Previously used JSON convertor "org.apache.kafka.connect.json.JsonConverter" which was causing the issue.
-		-- After changing Key and Value convertor to "org.apache.kafka.connect.converters.ByteArrayConverter" solved the issue.
-		-- Redis sink supports only "org.apache.kafka.connect.converters.ByteArrayConverter" and "org.apache.kafka.connect.storage.StringConverter" converter.
-		-- This information is documented in the Confluent Redis Sink website 
-			-- https://docs.confluent.io/kafka-connectors/redis/current/overview.html
-	
-	-- Error: The key for the record can not be null.
-		-- Resolution : Add partition by in the KSQL query and use VALUE_FORMAT = "KAFKA" so that value should not be in JSON format.
-        -- Also added a where statement when Key is not Null in KSQL query
-	
--- Test the redis sink
-    -- Check all the records getting pushed in the redis
-        -- "redis-cli MONITOR"
-    
-    -- Get value of the redis keys
-        -- Used to get into redis-cli
-            -- "redis-cli" 
-        -- Check database; if it is db1 then 1 will be the database id
-            -- "INFO keyspace"
-        -- Go to database 1; In this case only 1 DB exists that is db1 with id 1
-            -- "SELECT 1"
-        -- Message is streamed with Key "Sachin" and Value "{HERO : PINK_FLASH}". To check if the message is properly udpated in the Redis use GET method.
-            -- "GET 'SACHIN'"
-
-
-
-######### Important Links #################
-
-
-
+##### Important Links
+ 
 -- Confluent Kafka Connect Cluster- Worker configuration properties
 https://docs.confluent.io/platform/current/connect/references/allconfigs.html
 

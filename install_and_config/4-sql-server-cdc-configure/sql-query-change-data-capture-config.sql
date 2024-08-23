@@ -1,6 +1,6 @@
 
 -- Refer Confluent Link for CDC Setup : https://docs.confluent.io/kafka-connectors/debezium-sqlserver-source/current/overview.html
-
+ 
 ---- Enable CDC in SQL Server ---
 USE TRYIT
 GO
