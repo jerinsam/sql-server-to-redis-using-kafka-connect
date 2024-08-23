@@ -1,4 +1,4 @@
-
+-- Use this insterts to test whether messages are streamed
 
 delete from [dbo].[TestCacheKafkaConnect] ;
 
