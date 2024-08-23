@@ -35,7 +35,7 @@ The solution is created on following are the list of Services:
 7. Redis
 
 ### Solution high level architecture
-![alt text]([https://github.com/[username]/[reponame]/blob/[branch]/image.jpg](https://github.com/jerinsam/sql-server-to-redis-using-kafka-connect/blob/main/main/kafka-connect-architecture.png)?raw=true)
+![alt text](https://github.com/jerinsam/sql-server-to-redis-using-kafka-connect/blob/main/main/kafka-connect-architecture.png?raw=true)
 
 #### Install and Config
 
