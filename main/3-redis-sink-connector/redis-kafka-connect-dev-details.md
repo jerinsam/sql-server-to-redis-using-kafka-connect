@@ -4,6 +4,14 @@
 ##### Redis Kafka Sink Connector Properties:
 - https://docs.confluent.io/kafka-connectors/redis/current/overview.html
 	
+##### Steps used to register the connector
+- Go to Confluent UI
+- Click on Cluster and go to Connect section
+- Go to Connect Cluster and click on add connector
+- Upload JSON config, a page will pop up with the connector properties filled from the uploaded JSON config
+- Click Next and OK
+- Task will be created and it should be in Running state
+- In case of Error, Go to Connect Docker and check the logs
 
 ##### Important Properties of Redis Connector
     "name": "redis-sink",
@@ -14,14 +22,13 @@
     "topics": "ksqldb-tranform-kafka-connect-payload",
     "redis.hosts": "redis:6379"
 
-
 ##### Topics used in Redis Sink
 - Topic used in the config is cerated using KSQL Streams (scripts can be found in ksql folder). 
 - KSQL is used to transform the records coming from the topic used by sql server connector to push the table rows.
 
 
 ##### Errors faced during the development
-- Error : Kafka Connect unaable to connect to redis with error "Unable to connect to localhost:6379"
+- Error : Redis Sink Connect unable to connect to redis server throwing error "Unable to connect to localhost:6379"
     - Resolution : 
         - In the connector configuration json add "redis.hosts" property with value "redis:6379" (** This is the host name value passed in redis container section of docker compose yaml)
         - Host names is generally used to communicate across different docker containers and localhost:port is used by the host system to communicate with docker container.
@@ -37,7 +44,9 @@
             - https://docs.confluent.io/kafka-connectors/redis/current/overview.html
 
 - Error: The key for the record can not be null.
-    - Resolution : Add partition by in the KSQL query and use VALUE_FORMAT = "KAFKA" so that value should not be in JSON format.
+    - Resolution : Add "partition by" in the KSQL query and use "VALUE_FORMAT = "KAFKA""
+    - "partition by" will populate message key with RedisKey column vale
+    - "VALUE_FORMAT = "KAFKA"" will serialize the data in plain text, this will help value in Redis to be as we have in SQL Server
     - Also added a where statement when Key is not Null in KSQL query
 	
 ##### Test the redis sink

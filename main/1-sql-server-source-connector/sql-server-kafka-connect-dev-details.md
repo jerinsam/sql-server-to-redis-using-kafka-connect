@@ -11,6 +11,14 @@
 - https://docs.confluent.io/kafka-connectors/debezium-sqlserver-source/current/overview.html
 - https://docs.confluent.io/kafka-connectors/debezium-sqlserver-source/current/sqlserver_source_connector_config.html#advanced-properties
 
+##### Steps used to register the connector
+- Go to Confluent UI
+- Click on Cluster and go to Connect section
+- Go to Connect Cluster and click on add connector
+- Upload JSON config, a page will pop up with the connector properties filled from the uploaded JSON config
+- Click Next and OK
+- Task will be created and it should be in Running state
+- In case of Error, Go to Connect Docker and check the logs
 
 ##### Important Properties of the connector
     "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
@@ -38,15 +46,22 @@
 
 
 ##### Errors faced during the development
-- Kafka Connect unaable to connect to kafka broker with error "Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available."
+
+- Issue with SQL Server Connection
+    - This Issue won't allow us to create the Task. Connector will give error while clicking next after uploading JSON config
+    - Resolution : 
+        - Make sure IP address of the SQL Server is correct.
+        - Config property in JSON "database.trustServerCertificate" should be true.
+
+- Error - Kafka Connect unaable to connect to kafka broker with error "Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available."
     - Resolution : In the connector configuration json add "schema.history.internal.kafka.bootstrap.servers" property with value "broker:29092" (** This is the bootstrap server value present in Connect container section of docker compose yaml)
     - bootstrap server is generally used to communicate across different docker containers and localhost:port is used by the host system to communicate with docker container.
     - In config json, always mention bootstrap server or host name mentioned in docker compose yaml, instead of localhost. If localhost is passed then there will be error.
 
 - Issue with unregistered topics
-    - Resolution : Create all the topics mentioned in the connector config json before creating the connector 
+    - Resolution : Create topic mentioned in the "schema.history.internal.kafka.topic" property of connector config json before creating the connector 
 
-- Error "The db history topic or its content is fully or partially missing. Please check database schema history topic configuration and re-execute the snapshot."
+- Error - "The db history topic or its content is fully or partially missing. Please check database schema history topic configuration and re-execute the snapshot."
     - Workaround : Configure connector with different name 
     - Resolution : Topic of "schema.history.internal.kafka.topic" should have "retention.ms" property as -1 and "retention.bytes" as -1. -1 denotes infinity.
     - Refer : https://basantakharel.com/setting-up-kafka-connect-with-debezium-connectors-importance-of-database-history-parameters
@@ -62,7 +77,7 @@
     - Execute above shell script in broker's shell.          
 - Add new records in the table mentioned in the connector configuration
     - All the new records will start showing up in the console 
-    - Use Insert into SQL Server Table scripts in the /Test folder
+    - Use Insert into SQL Server Table scripts in the test-sql-script folder
  
 
 ##### Important Links
