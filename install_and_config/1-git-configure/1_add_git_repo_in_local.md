@@ -1,36 +1,36 @@
- 
-#Configure Git
+### Configure Git
 
-	###### initialize a repo and then push to github ######
+#### Initialize a repo and then push to github
 	git init
-	
-	###### clone a github repo to local  #######
+
+#### Clone a Github repo to local
 	git clone https://github.com/jerinsam/SQL_SERVER_TO_REDIS_KAFKA_CONNECT
 
-
+##### Git Config
 	git config --global user.email "jerinsam16@gmail.com"
 	git config --global user.name "Jerin"
 	git add README.md
 	git commit -m "first commit"
 	git branch #To check which branch you are in
 	git branch -M main
-	
-	## show git origin details ##
+
+##### Show Git origin details 
 	git remote show origin
-	
-	## add git origin ##
+
+##### Add Git origin 
 	git remote add origin https://github.com/jerinsam/SQL_SERVER_TO_REDIS_KAFKA_CONNECT.git
-	
-	# Track changes of Remote Repor dev branch 
+
+##### Track changes of Remote Repor dev branch 
 	git push --set-upstream origin dev
 
 	git push -u origin main
 		token : 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
-	
-	########## Create new branch #########
-	## Identify new changes in the Origin i.e. remote (github) repo
+
+#### Create new branch 
+
+##### Identify new changes in the Origin i.e. remote (github) repo
 	git fetch origin
-	## Update local repo with any change in remote repo
+##### Update local repo with any change in remote repo
 	git pull origin main
-	## Checkout to create new dev branch 
+##### Checkout to create new dev branch 
 	git checkout -b dev

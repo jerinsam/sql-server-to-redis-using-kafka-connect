@@ -1,5 +1,5 @@
 # SQL_SERVER_TO_REDIS_KAFKA_CONNECT
-DATA ENGINEERING SOLUTIONS - STREAM SQL SERVER DATA TO REDIS USING KAFKA CONNECT.
+**DATA ENGINEERING SOLUTIONS - STREAM SQL SERVER DATA TO REDIS USING KAFKA CONNECT**
 
 #### Problem Statement - 
 
@@ -23,7 +23,7 @@ Keeping all these issues in mind, Final Solution has following sections:
 
 This solution will not completely eliminate the Initial wait issue but will reduce a lot. 
 
-#### Implementation - 
+### Implementation - 
 In this POC, We are looking into the Point 4, i.e. Streaming app to push the processed data to Redis.
 The solution is created on following are the list of Services:
 1. Docker
@@ -34,7 +34,7 @@ The solution is created on following are the list of Services:
 6. Kafka Connect - Redis Sink Connector
 7. Redis
 
-##### Install and Config
+#### Install and Config
 
 **Refer**: install_and_config Folder to get the details of the installation on the following - 
 1. Configure Git for this project
@@ -42,7 +42,7 @@ The solution is created on following are the list of Services:
 3. Connectors installation in Docker
 4. Enable CDC in SQL Server Table, which will be tracked by Kafka connect source connector 
 
-##### Connector and Configuration
+#### Connector and Configuration
 
 **Refer**: /main folder to get the details of Connector configuraton and KSQL stream transformation -
 1. Sql Server Source Connector : Contains details of configuration details of the connector, important links to follow, along with errors faced during the development.
@@ -52,7 +52,7 @@ The solution is created on following are the list of Services:
 3. Redis Sink Connector : Contains configuration details of the connector, important links to follow, along with errors faced during the development.
 
 
-##### Description:
+#### Description:
 1. **Source Connector** : In this solution, following steps are taken-
    - Configured SQL Server Debezium Source Connector - This connector will monitor the table where processed data from SP for redis is stored.
    - SQL Server CDC needs to be enabled on the Table which is being monitored.
@@ -90,24 +90,24 @@ The solution is created on following are the list of Services:
 - https://docs.confluent.io/kafka-connectors/debezium-sqlserver-source/current/overview.html
 
 ### Confluent Kakfa Connect tutorial 
-    https://docs.confluent.io/platform/current/platform-quickstart.html
+- https://docs.confluent.io/platform/current/platform-quickstart.html
 
 ### SQL Server Kafka Connector Properties:
-    https://zakir-hossain.medium.com/debezium-source-connector-on-confluent-platform-d00494c29d17 
-    https://debezium.io/documentation/reference/stable/connectors/sqlserver.html
-    https://docs.confluent.io/kafka-connectors/debezium-sqlserver-source/current/overview.html
-    https://docs.confluent.io/kafka-connectors/debezium-sqlserver-source/current/sqlserver_source_connector_config.html#advanced-properties
+- https://zakir-hossain.medium.com/debezium-source-connector-on-confluent-platform-d00494c29d17 
+- https://debezium.io/documentation/reference/stable/connectors/sqlserver.html
+- https://docs.confluent.io/kafka-connectors/debezium-sqlserver-source/current/overview.html
+- https://docs.confluent.io/kafka-connectors/debezium-sqlserver-source/current/sqlserver_source_connector_config.html#advanced-properties
  
 ### Value and Key converter (serializer)
-   - https://www.confluent.io/blog/kafka-connect-deep-dive-converters-serialization-explained/
+- https://www.confluent.io/blog/kafka-connect-deep-dive-converters-serialization-explained/
    
 
 ### KSQL Serialization 
-	- https://docs.ksqldb.io/en/latest/reference/serialization/#kafka
+- https://docs.ksqldb.io/en/latest/reference/serialization/#kafka
 		
-	- Serialization issue using JSON as VALUE_FORMAT
-		https://stackoverflow.com/questions/73062155/issue-with-ksql-struct-with-value-format-json
+- Serialization issue using JSON as VALUE_FORMAT
+   - https://stackoverflow.com/questions/73062155/issue-with-ksql-struct-with-value-format-json
 
 ### Redis Kafka Sink Connector Properties:
-    https://docs.confluent.io/kafka-connectors/redis/current/overview.html
+- https://docs.confluent.io/kafka-connectors/redis/current/overview.html
 	
