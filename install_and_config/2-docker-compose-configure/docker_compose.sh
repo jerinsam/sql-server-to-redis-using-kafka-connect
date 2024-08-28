@@ -2,7 +2,7 @@
 # url : https://github.com/confluentinc/cp-all-in-one/tree/7.5.0-post/cp-all-in-one
 # Folder : cp-all-in-one
 
-# Download Docker
+# Download Docker Desktop for Windows and run it
 # Download Docker Compose yaml file from the above mentioned github page and use docker compose command to download and start the service
 
 # Execute the below command to pull and configure all the images defined in the docker-compose.yaml file
