@@ -7,8 +7,8 @@
 	git clone https://github.com/jerinsam/SQL_SERVER_TO_REDIS_KAFKA_CONNECT
 
 ##### Git Config
-	git config --global user.email "jerinsam16@gmail.com"
-	git config --global user.name "Jerin"
+	git config --global user.email "XXXXXX@gmail.com"
+	git config --global user.name "XXXXX"
 	git add README.md
 	git commit -m "first commit"
 	git branch #To check which branch you are in
@@ -24,7 +24,7 @@
 	git push --set-upstream origin dev
 
 	git push -u origin main
-		token : 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
+		token : XXXXXXXXX-XXXXXXXXXXXXXXX-XXXXXXXXXXX
 
 #### Create new branch 
 
